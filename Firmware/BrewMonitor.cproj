@@ -1,0 +1,1340 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.2</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
+    <ProjectGuid>{2384c2dd-1602-46ae-b04d-954ad8b4a962}</ProjectGuid>
+    <avrdevice>ATmega32U4</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>AVR App</AssemblyName>
+    <Name>AVR App</Name>
+    <RootNamespace>AVR App</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <AsfVersion>3.5.0</AsfVersion>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <BootSegment>2</BootSegment>
+    <AsfFrameworkConfig>
+      <framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.6.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.jtagice3plus</avrtool>
+    <com_atmel_avrdbg_tool_jtagice3plus>
+      <ToolOptions>
+        <InterfaceProperties>
+          <IspClock>271540</IspClock>
+          <JtagDbgClock>200000</JtagDbgClock>
+        </InterfaceProperties>
+        <InterfaceName>ISP</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.jtagice3plus</ToolType>
+      <ToolNumber>J30200014338</ToolNumber>
+      <ToolName>JTAGICE3</ToolName>
+    </com_atmel_avrdbg_tool_jtagice3plus>
+    <avrtoolinterface>ISP</avrtoolinterface>
+    <preserveEEPROM>False</preserveEEPROM>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <UsesExternalMakeFile>True</UsesExternalMakeFile>
+    <ExternalMakeFilePath>makefile</ExternalMakeFilePath>
+    <ToolchainSettings>
+      <AvrGcc xmlns="">
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+        <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+      </AvrGcc>
+    </ToolchainSettings>
+    <BuildTarget>all</BuildTarget>
+    <CleanTarget>clean</CleanTarget>
+    <OutputDirectory />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc xmlns="">
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+      </AvrGcc>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Config\AppConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Config\LUFAConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="crc8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="crc8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Descriptors.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Descriptors.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BrewMonitor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="BrewMonitor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ds18x20.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ds18x20.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="i2cmaster.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Build\HID_EEPROM_Loader\HID_EEPROM_Loader.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\CodeTemplates\DriverStubs\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\CodeTemplates\DriverStubs\Dataflash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\CodeTemplates\DriverStubs\Joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\CodeTemplates\DriverStubs\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\CodeTemplates\LUFAConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Common\Architectures.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Common\ArchitectureSpecific.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Common\Attributes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Common\BoardTypes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Common\Common.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Common\CompilerSpecific.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Common\Endianness.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\ADAFRUITU4\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\ATAVRUSBRF01\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\ATAVRUSBRF01\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\BENITO\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\BENITO\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\BIGMULTIO\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\BLACKCAT\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\BUI\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\BUMBLEB\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\BUMBLEB\Joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\BUMBLEB\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\CULV3\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\CULV3\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\DUCE\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\EVK527\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\EVK527\Dataflash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\EVK527\Joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\EVK527\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\JMDBU2\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\JMDBU2\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\MAXIMUS\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\MICROPENDOUS\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\MICROPENDOUS\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\MICROSIN162\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\MICROSIN162\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\MINIMUS\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\MINIMUS\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\MULTIO\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\OLIMEX162\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\OLIMEX162\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\OLIMEX32U4\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\OLIMEX32U4\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\OLIMEXISPMK2\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\OLIMEXISPMK2\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\OLIMEXT32U4\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\OLIMEXT32U4\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\RZUSBSTICK\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\SPARKFUN8U2\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\STK525\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\STK525\Dataflash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\STK525\Joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\STK525\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\STK526\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\STK526\Dataflash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\STK526\Joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\STK526\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\TEENSY\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\TUL\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\TUL\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\UDIP\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\UDIP\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\UNO\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USB2AX\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USB2AX\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USBFOO\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USBFOO\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USBKEY\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USBKEY\Dataflash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USBKEY\Joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USBKEY\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USBTINYMKII\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\USBTINYMKII\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\XPLAIN\Dataflash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\AVR8\XPLAIN\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\Dataflash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\Joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\Temperature.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\Temperature.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\UC3\EVK1100\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\UC3\EVK1100\Joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\UC3\EVK1100\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\UC3\EVK1101\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\UC3\EVK1101\Joystick.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\UC3\EVK1101\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\UC3\EVK1104\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\UC3\EVK1104\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\XMEGA\A3BU_XPLAINED\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\XMEGA\A3BU_XPLAINED\Dataflash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\XMEGA\A3BU_XPLAINED\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\XMEGA\B1_XPLAINED\Buttons.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\XMEGA\B1_XPLAINED\Dataflash.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Board\XMEGA\B1_XPLAINED\LEDs.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Misc\AT45DB321C.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Misc\AT45DB642D.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Misc\RingBuffer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Misc\TerminalCodes.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\ADC.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\AVR8\ADC_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\AVR8\SerialSPI_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\AVR8\Serial_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\AVR8\Serial_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\AVR8\SPI_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\AVR8\TWI_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\AVR8\TWI_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\Serial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\SerialSPI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\SPI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\TWI.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\XMEGA\SerialSPI_XMEGA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\XMEGA\Serial_XMEGA.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\XMEGA\Serial_XMEGA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\Peripheral\XMEGA\SPI_XMEGA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\AndroidAccessoryClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\AudioClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\CDCClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\AndroidAccessoryClassCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\AudioClassCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\CDCClassCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\HIDClassCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\HIDParser.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\HIDParser.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\HIDReportData.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\MassStorageClassCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\MIDIClassCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\PrinterClassCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\RNDISClassCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Common\StillImageClassCommon.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\AudioClassDevice.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\AudioClassDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\CDCClassDevice.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\CDCClassDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\HIDClassDevice.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\HIDClassDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\MassStorageClassDevice.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\MassStorageClassDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\MIDIClassDevice.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\MIDIClassDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\RNDISClassDevice.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Device\RNDISClassDevice.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\HIDClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\AndroidAccessoryClassHost.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\AndroidAccessoryClassHost.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\AudioClassHost.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\AudioClassHost.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\CDCClassHost.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\CDCClassHost.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\HIDClassHost.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\HIDClassHost.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\MassStorageClassHost.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\MassStorageClassHost.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\MIDIClassHost.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\MIDIClassHost.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\PrinterClassHost.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\PrinterClassHost.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\RNDISClassHost.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\RNDISClassHost.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\StillImageClassHost.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\Host\StillImageClassHost.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\MassStorageClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\MIDIClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\PrinterClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\RNDISClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Class\StillImageClass.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Device_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Device_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\EndpointStream_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\EndpointStream_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Endpoint_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Endpoint_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Host_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Host_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\OTG_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\PipeStream_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\PipeStream_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Pipe_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Pipe_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Template\Template_Endpoint_Control_R.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Template\Template_Endpoint_Control_W.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Template\Template_Endpoint_RW.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\Template\Template_Pipe_RW.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\USBController_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\USBController_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\USBInterrupt_AVR8.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\AVR8\USBInterrupt_AVR8.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\ConfigDescriptors.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\ConfigDescriptors.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\Device.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\DeviceStandardReq.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\DeviceStandardReq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\Endpoint.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\EndpointStream.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\Events.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\Events.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\Host.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\HostStandardReq.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\HostStandardReq.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\OTG.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\Pipe.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\PipeStream.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\StdDescriptors.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\StdRequestType.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Device_UC3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Device_UC3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\EndpointStream_UC3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\EndpointStream_UC3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Endpoint_UC3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Endpoint_UC3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Host_UC3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Host_UC3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\PipeStream_UC3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\PipeStream_UC3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Pipe_UC3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Pipe_UC3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Template\Template_Endpoint_Control_R.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Template\Template_Endpoint_Control_W.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Template\Template_Endpoint_RW.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\Template\Template_Pipe_RW.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\USBController_UC3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\USBController_UC3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\USBInterrupt_UC3.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\UC3\USBInterrupt_UC3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\USBController.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\USBInterrupt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\USBMode.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\USBTask.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\USBTask.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\Device_XMEGA.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\Device_XMEGA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\EndpointStream_XMEGA.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\EndpointStream_XMEGA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\Endpoint_XMEGA.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\Endpoint_XMEGA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\Host_XMEGA.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\PipeStream_XMEGA.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\Pipe_XMEGA.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\Template\Template_Endpoint_Control_R.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\Template\Template_Endpoint_Control_W.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\Template\Template_Endpoint_RW.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\USBController_XMEGA.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\USBController_XMEGA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\USBInterrupt_XMEGA.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\Core\XMEGA\USBInterrupt_XMEGA.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Drivers\USB\USB.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Platform\Platform.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Platform\UC3\ClockManagement.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Platform\UC3\Exception.S">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Platform\UC3\InterruptManagement.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Platform\UC3\InterruptManagement.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Platform\XMEGA\ClockManagement.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LUFA\Version.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="memory.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="memory.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="onewire.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="onewire.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pcb13.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="twimaster.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uart.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="uart.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LUFA\Build\HID_EEPROM_Loader\makefile">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Build\lufa_atprogram.mk">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Build\lufa_avrdude.mk">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Build\lufa_build.mk">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Build\lufa_core.mk">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Build\lufa_cppcheck.mk">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Build\lufa_dfu.mk">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Build\lufa_doxygen.mk">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Build\lufa_hid.mk">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Build\lufa_sources.mk">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\CodeTemplates\makefile_template">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Doxygen.conf">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\BuildingLinkableLibraries.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\BuildSystem.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\ChangeLog.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\CompileTimeTokens.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\CompilingApps.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\ConfiguringApps.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\DevelopingWithLUFA.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\DeviceSupport.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\DirectorySummaries.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Donating.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\ExportingLibrary.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\FutureChanges.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\GettingStarted.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Groups.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\AS5_AS6_Import\AS5_AS6_Import_Step1.png">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\AS5_AS6_Import\AS5_AS6_Import_Step2.png">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\AS5_AS6_Import\AS5_AS6_Import_Step3.png">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\AS5_AS6_Import\AS5_AS6_Import_Step4.png">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\AS5_AS6_Import\AS5_AS6_Import_Step5_1.png">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\AS5_AS6_Import\AS5_AS6_Import_Step5_2.png">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\AS5_AS6_Import\AS5_AS6_Import_Step5_3.png">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\Author.jpg">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\LUFA.png">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Images\LUFA_thumb.png">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\KnownIssues.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\LibraryResources.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\LicenseInfo.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\LUFAPoweredProjects.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\MainPage.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\MigrationInformation.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\ProgrammingApps.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\SoftwareBootloaderJump.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Style\Footer.htm">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\Style\Style.css">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\VIDAndPIDValues.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\DoxygenPages\WritingBoardDrivers.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Common\HIDParser.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Common\HIDParser.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\AudioClassDevice.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\AudioClassDevice.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\CDCClassDevice.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\CDCClassDevice.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\HIDClassDevice.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\HIDClassDevice.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\MassStorageClassDevice.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\MassStorageClassDevice.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\MIDIClassDevice.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\MIDIClassDevice.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\RNDISClassDevice.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Device\RNDISClassDevice.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\AndroidAccessoryClassHost.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\AndroidAccessoryClassHost.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\AudioClassHost.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\AudioClassHost.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\CDCClassHost.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\CDCClassHost.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\HIDClassHost.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\HIDClassHost.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\MassStorageClassHost.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\MassStorageClassHost.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\MIDIClassHost.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\MIDIClassHost.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\PrinterClassHost.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\PrinterClassHost.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\RNDISClassHost.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\RNDISClassHost.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\StillImageClassHost.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Class\Host\StillImageClassHost.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\Device_AVR8.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\Device_AVR8.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\EndpointStream_AVR8.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\EndpointStream_AVR8.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\Endpoint_AVR8.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\Endpoint_AVR8.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\Host_AVR8.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\Host_AVR8.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\PipeStream_AVR8.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\PipeStream_AVR8.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\Pipe_AVR8.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\Pipe_AVR8.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\USBController_AVR8.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\USBController_AVR8.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\USBInterrupt_AVR8.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\AVR8\USBInterrupt_AVR8.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\ConfigDescriptors.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\ConfigDescriptors.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\DeviceStandardReq.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\DeviceStandardReq.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\Events.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\Events.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\HostStandardReq.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\HostStandardReq.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\USBTask.d">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\Drivers\USB\Core\USBTask.o">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\License.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="LUFA\makefile">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="makefile">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="readme.txt">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Config\" />
+    <Folder Include="LUFA\" />
+    <Folder Include="LUFA\Build\" />
+    <Folder Include="LUFA\Build\HID_EEPROM_Loader\" />
+    <Folder Include="LUFA\CodeTemplates\" />
+    <Folder Include="LUFA\CodeTemplates\DriverStubs\" />
+    <Folder Include="LUFA\Common\" />
+    <Folder Include="LUFA\DoxygenPages\" />
+    <Folder Include="LUFA\DoxygenPages\Images\" />
+    <Folder Include="LUFA\DoxygenPages\Images\AS5_AS6_Import\" />
+    <Folder Include="LUFA\DoxygenPages\Style\" />
+    <Folder Include="LUFA\Drivers\" />
+    <Folder Include="LUFA\Drivers\Board\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\ADAFRUITU4\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\ATAVRUSBRF01\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\BENITO\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\BIGMULTIO\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\BLACKCAT\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\BUI\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\BUMBLEB\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\CULV3\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\DUCE\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\EVK527\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\JMDBU2\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\MAXIMUS\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\MICROPENDOUS\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\MICROSIN162\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\MINIMUS\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\MULTIO\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\OLIMEX162\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\OLIMEX32U4\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\OLIMEXISPMK2\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\OLIMEXT32U4\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\RZUSBSTICK\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\SPARKFUN8U2\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\STK525\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\STK526\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\TEENSY\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\TUL\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\UDIP\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\UNO\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\USB2AX\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\USBFOO\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\USBKEY\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\USBTINYMKII\" />
+    <Folder Include="LUFA\Drivers\Board\AVR8\XPLAIN\" />
+    <Folder Include="LUFA\Drivers\Board\UC3\" />
+    <Folder Include="LUFA\Drivers\Board\UC3\EVK1100\" />
+    <Folder Include="LUFA\Drivers\Board\UC3\EVK1101\" />
+    <Folder Include="LUFA\Drivers\Board\UC3\EVK1104\" />
+    <Folder Include="LUFA\Drivers\Board\XMEGA\" />
+    <Folder Include="LUFA\Drivers\Board\XMEGA\A3BU_XPLAINED\" />
+    <Folder Include="LUFA\Drivers\Board\XMEGA\B1_XPLAINED\" />
+    <Folder Include="LUFA\Drivers\Misc\" />
+    <Folder Include="LUFA\Drivers\Peripheral\" />
+    <Folder Include="LUFA\Drivers\Peripheral\AVR8\" />
+    <Folder Include="LUFA\Drivers\Peripheral\UC3\" />
+    <Folder Include="LUFA\Drivers\Peripheral\XMEGA\" />
+    <Folder Include="LUFA\Drivers\USB\" />
+    <Folder Include="LUFA\Drivers\USB\Class\" />
+    <Folder Include="LUFA\Drivers\USB\Class\Common\" />
+    <Folder Include="LUFA\Drivers\USB\Class\Device\" />
+    <Folder Include="LUFA\Drivers\USB\Class\Host\" />
+    <Folder Include="LUFA\Drivers\USB\Core\" />
+    <Folder Include="LUFA\Drivers\USB\Core\AVR8\" />
+    <Folder Include="LUFA\Drivers\USB\Core\AVR8\Template\" />
+    <Folder Include="LUFA\Drivers\USB\Core\UC3\" />
+    <Folder Include="LUFA\Drivers\USB\Core\UC3\Template\" />
+    <Folder Include="LUFA\Drivers\USB\Core\XMEGA\" />
+    <Folder Include="LUFA\Drivers\USB\Core\XMEGA\Template\" />
+    <Folder Include="LUFA\Platform\" />
+    <Folder Include="LUFA\Platform\AVR8\" />
+    <Folder Include="LUFA\Platform\UC3\" />
+    <Folder Include="LUFA\Platform\XMEGA\" />
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>

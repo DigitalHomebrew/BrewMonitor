@@ -1,0 +1,2 @@
+From MCSElectronics
+VID=16D0, PID=07AA
