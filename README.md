@@ -6,8 +6,9 @@ The idea is pretty simple - to hook up a recording device to your fermenter and 
 
 Note: This project is not an alternative for taking specific gravity readings, rather BrewMonitor can help to determine when you should be taking manual specific gravity readings.
 
-![alt tag](https://raw.github.com/DigitalHomebrew/BrewMonitor/branch/path/to/img.png)
-<BrewMonitor><Graph><Notifications><Configuration><Fridge><IOS>
+![alt tag](https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/explore%20screenshot.png?raw=true)
+![alt tag](https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/monitor%20screenshot.png?raw=true)
+![alt tag](https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/configure%20screenshot.png?raw=true)
 
 The BrewMonitor ecosystem incorporates an electronic box (the BrewMonitor) and some PC software that allows you to explore and export your BrewMonitor's memory contents. You can run the BrewMonitor without a computer by powering it from a spare USB charger or battery bank. In this case it can simply record data to its own internal memory until you connect it to a computer later. Alternatively, you can operate your BrewMonitor while it is connected to a computer (a spare laptop perhaps?) and the computer software can communicate over the internet to send notifications to your phone when certain conditions are met.
 
