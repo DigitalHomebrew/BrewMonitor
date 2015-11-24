@@ -1,14 +1,21 @@
 BrewMonitor
 ===========
-BrewMonitor is a project for monitoring the fermentation of your home brew.
+BrewMonitor is a system for monitoring and recording the fermentation of your home brew.
 
-The concept is pretty simple - to hook up a recording device to your fermenter and record temperature and airlock activity. That way you can easily answer questions like "what was my lag time?", "what was my peak temperature?" and "how well is my fridge controlling the temperature?" without having to keep a hawk eye on your fermentation.
+<p align="center">
+  <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20pcb.jpg" width="700"/>
+</p>
 
-![alt tag](https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/explore%20screenshot.png?raw=true)
+The concept is pretty simple - to hook up a recording device to your fermenter and record temperature and airlock activity. That way you can easily answer questions like:
+* "What was my lag time?" - An indicator of yeast viability, health and pitching rate.
+* "Is fermentation slowing down yet?" - Useful to know if you want to perform a diacetyl rest.
+* "How long ago did it stop bubbling?" - Might be time to take some final gravity readings to prepare for bottling.
+* "What was my peak temperature during fermentation?" - Necessary to calculate priming additions.
 
-Sidenote: This project is not an alternative for taking specific gravity readings, rather BrewMonitor can help to determine when you should be taking manual specific gravity readings.
-
-![alt tag](https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20enclosure.jpg)
+<p align="center">
+  <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/explore%20screenshot.png?raw=true"/>
+  <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20enclosure.jpg" width="700"/>
+</p>
 
 The BrewMonitor ecosystem incorporates an electronic box (the BrewMonitor) and some PC software that allows you to explore and export your BrewMonitor's memory contents. You can run the BrewMonitor without a computer by powering it from a spare USB charger or battery bank. In this case it can simply record data to its own internal memory until you connect it to a computer later. Alternatively, you can operate your BrewMonitor while it is connected to a computer (a spare laptop perhaps?) and the computer software can communicate over the internet to send notifications to your phone when certain conditions are met.
 
