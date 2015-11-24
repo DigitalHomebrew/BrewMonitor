@@ -1,1 +1,0 @@
-C:\WinAVR-20100110\bin\avrdude.exe -p attiny45 -c avrisp2 -P usb -U flash:w:"$(OutputDirectory)\BrewMonitorUSB.hex":i
