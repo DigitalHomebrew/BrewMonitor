@@ -1,0 +1,17 @@
+Align switches and LEDs to metric grid.
+Switches don't align currently.
+Bring back headphone and USB sockets flush with PCB.
+Make Headphone socket holes smaller for alignment
+
+Remove holes from USB connector
+Remove extraneous pads on Headphone sockets and stencil.
+Align the reset button more to the right. Maybe make itpoke out a little more?
+NEED PULLUP ON SCL PIN!!
+remove S3 and LED1 and R11 and R4
+
+Use better usb connector with locating pins like 609-4613-6-ND
+
+Make a marking on each jack for bubbles/temperature on silkscreen
+
+add an internal temp sensor
+add 2 12v jacks, a 5v regulator and a mosfet for switching temp control
