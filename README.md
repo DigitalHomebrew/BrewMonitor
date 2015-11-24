@@ -1,19 +1,27 @@
 BrewMonitor
 ===========
-Brewing is great fun, but keeping regular tabs on your fermentation for days or weeks on end can become tedious for even the most dedicated home brewer. BrewMonitor is an automated system for monitoring and recording your home brew's fermentation so that you don't have to, allowing you to go about your daily life in confidence that your fermentation is still being watched.
+Brewing is great fun, but keeping regular tabs on your fermentation for days or weeks on end can become tedious for even the most dedicated of us. BrewMonitor is a system for monitoring and recording your home brew's fermentation automatically so that you don't have to. This allows you to go about your daily life in confidence that your fermentation is still being monitored and you can check up on it remotely at any time.
 
-<p align="center">
-  <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20pcb.jpg" width="700"/>
-</p>
-
-The concept is pretty simple - to hook up a recording device to your fermenter and record temperature and airlock activity. That way you can easily answer difficult questions that would otherwise require constant observation, such as:
+The concept is pretty simple - to hook up a recording device to your fermenter that records temperature and airlock activity. That way you can easily answer important questions that would otherwise require constant observation, such as:
 * "What was my lag time?" - An indicator of yeast viability, health and pitching rate.
 * "Is fermentation slowing down yet?" - Good to know if you want to perform a diacetyl rest.
 * "How long ago did it stop bubbling?" - Might be time to take some final gravity readings to prepare for bottling.
 * "What was my peak temperature during fermentation?" - Necessary to accurately calculate priming additions.
 
 #The hardware
-The BrewMonitor is an Atmel AVR based circuit that uses a DS18B20 temperature probe for measuring temperature and a custom infrared light gate to monitor bubbles passing through your air lock. It has onboard memory storage and supports USB connectivity with a PC.
+The BrewMonitor is an AVR based circuit that uses a DS18B20 temperature probe for measuring temperature and a custom infrared light gate to monitor bubbles passing through your air lock. It also has onboard memory storage and supports PC connectivity over USB.
+
+<p align="center">
+  <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20pcb.jpg" width="700"/>
+</p>
+
+Fermentation activity is monitored by counting the bubbles passing through a common gooseneck airlock. Rather than telling you "how much" your beer has fermented, watching the airlock gives you an indication of "how active" your fermentation currently is. The bubbles are detected using an infrared light gate and the signal is interpreted with an ADC on the microcontroller.
+
+<p align="center">
+  <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20airlock.jpg" width="700"/>
+</p>
+
+BrewMonitor's hardware is completely open source and the eagle files for the PCB are included in this repository also.
 
 #The software
 The BrewMonitor application is written in C#.NET and runs on windows. It has three main purposes:
@@ -49,9 +57,3 @@ We're currently working on a number of notifications like:
 "Your temperature has crept up to 25C. You might wanna ice-bath that baby"
 "Your bubble rate has slowed to 50% of its peak, now might be a good time for a diacetyl rest"
 "Your airlock has been nactive for a while. Time to take some S.G. readings and free up a keg"
-
-
-
-The Hardware is completely open source and the eagle files for the PCB are included in this repository also. Here's a pic of a completed board as well as a completed unit in a CNC cut ABS enclosure.
-![alt tag](https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20pcb.jpg)
-![alt tag](https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20enclosure.jpg)
