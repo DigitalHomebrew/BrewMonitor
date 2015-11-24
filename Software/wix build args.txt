@@ -1,0 +1,2 @@
+call "C:\Program Files (x86)\WiX Toolset v3.8\bin\candle.exe" "$(SolutionDir)BrewMonitorSetup\Product.wxs" -out "$(SolutionDir)Installer.wixobj"
+call "C:\Program Files (x86)\WiX Toolset v3.8\bin\light.exe" "$(SolutionDir)Installer.wixobj"

@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrewMonitor", "BrewMonitor\BrewMonitor.csproj", "{73FCA75E-C775-41BF-A76E-BB06D248FEEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DashboardWPF", "DashboardWPF\DashboardWPF.csproj", "{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{73FCA75E-C775-41BF-A76E-BB06D248FEEE}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AE318B34-20C1-403C-8FB2-AF86BFB95DDF}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

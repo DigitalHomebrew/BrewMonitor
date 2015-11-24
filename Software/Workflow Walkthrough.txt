@@ -1,0 +1,11 @@
+Installer has a nice .exe with a nice logo/icon. It runs a WIX with cool grey background, orange progress bar, animated installing spinner and installs like any normal app, checking the OS and downloading the .NET framework if necessary. Later it will also install a windows service that does usb comms and http communications.
+
+On startup, if unplugged the "Connect your brewmonitor" screen appears. It has a drawing of the brewmonitor with the usb cable prominent but unplugged.
+
+Once you connect, it checks if you've conifgured it. If not it brings up a dialog asking if you'd like to configure it.
+
+Configuration wizard hides raw values from user. It asks them to connect the airlock sensor, breathe 5 bubbles through the airlock at a moderate speed, and auto-calculates the min-max ADC values to get the right number of bubbles. If they stuff up, they can try again. It also shows the raw values in a bar chart. Once it's done it gets them to breathe through some more bubbles, incrementing a counter. If all is well they can save the settings.
+
+Upon connection and confirmation that the device is configured the memory is read. The background is disabled, a progress bar displays and a chart is drawn in real time. The chart doesn't scale on the time axis, it will leave empty memory blank.
+
+A configuration button is shown, a download button is shown.

@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="DashboardWPF.Views.Configure.ConfigureView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:configure="clr-namespace:DashboardWPF.ViewModels.Configure"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=configure:ConfigureViewModel, IsDesignTimeCreatable=False}"
+             xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             dialog:DialogParticipation.Register="{Binding}"
+             d:DesignHeight="440" d:DesignWidth="700">
+    <Grid>
+        <Grid Name="ShowControls">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0">
+                    <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{StaticResource DelayString}"/>
+                </Label>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Label Content="Bubbles/min:" Width="90" DockPanel.Dock="Right"></Label>
+                    <controls:NumericUpDown Name="BubblesPerMin" TextAlignment="Left"
+                                            Minimum="0" Margin="2"
+                                            Width="100" HorizontalAlignment="Right"
+                                            Maximum="1000" Value="{Binding BubblesPerMin}"/>
+                </StackPanel>
+                <Label Grid.Row="3" Margin="0,20,0,0">
+                    <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{StaticResource CalibrationString}"/>
+                </Label>
+                <StackPanel Grid.Row="4" HorizontalAlignment="Right" Orientation="Horizontal" Margin="200,0,0,0">
+                    <Label Content="Upper value:" Width="90"></Label>
+                    <controls:NumericUpDown Name="HighThreshold" Margin="2" Width="100"
+                                        TextAlignment="Left"
+                                        Minimum="0"                                        
+                                        Maximum="255" Value="{Binding HighThreshold}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="5" HorizontalAlignment="Right" Orientation="Horizontal" Margin="200,0,0,0">
+                    <Label Content="Lower value:" Width="90"></Label>
+                    <controls:NumericUpDown Name="LowThreshold" Margin="2" Width="100"
+                                        TextAlignment="Left"
+                                        Minimum="0"                                        
+                                        Maximum="255" Value="{Binding LowThreshold}"/>
+                </StackPanel>
+                <Label Grid.Row="6" Margin="0,20,0,0">
+                    <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Justify" Text="{StaticResource OutputString}"/>
+                </Label>
+                <DockPanel Grid.Row="7" Dock="Bottom" Margin="200,0,0,0">
+                    <Label Content="Bubbling:" Width="90"></Label>
+                    <RadioButton Margin="2" IsEnabled="False" IsTabStop="False" IsChecked="{Binding Bubbling}" />
+                </DockPanel>
+            </Grid>
+            <Grid Grid.Column="1" Margin="15,5,0,5" HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <controls:RangeSlider Orientation="Vertical"
+                                      MinRangeWidth="0"
+                                      VerticalAlignment="Stretch"
+                                      Margin="0,0,0,0"
+                                      Name="RangeSlider"
+                                      AutoToolTipPlacement="BottomRight"
+                                      AutoToolTipPrecision="0"
+                                      TickPlacement="Both"
+                                      TickFrequency="20"
+                                      IsSnapToTickEnabled="False"
+                                      Minimum="0"
+                                      Maximum="255"
+                                      IsMoveToPointEnabled="False"
+                                      ExtendedMode="True"
+                                      MoveWholeRange="False"
+                                      SmallChange="10"
+                                      LowerValue="{Binding LowThreshold, FallbackValue=100}"
+                                      UpperValue="{Binding HighThreshold, FallbackValue=120}" />
+                <ProgressBar Name="AdcValue" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Stretch"
+                                       
+                                       Height="{Binding Height, ElementName=RangeSlider}"
+                                       Minimum="0"
+                                       Maximum="255"
+                                       Width="10"
+                                       Foreground="{DynamicResource AccentColorBrush}"
+                                       Margin="10, 0, 0, 0" />                
+                <Label Grid.Column="2" Content="Raw Measurement" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Width="130" FontSize="14">
+                    <Label.LayoutTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.LayoutTransform>
+                </Label>
+            </Grid>
+        </Grid>
+        <Grid Name="ShowProgressRing">
+            <controls:ProgressRing IsActive="True" Margin="50" />
+        </Grid>
+    </Grid>
+
+</UserControl>

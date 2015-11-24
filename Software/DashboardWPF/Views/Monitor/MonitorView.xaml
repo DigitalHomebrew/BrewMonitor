@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="DashboardWPF.Views.Monitor.MonitorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700">
+    <Grid Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Name="StatsGrid" Grid.Row="0">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Current temperature:</Label>
+                    <Label>29</Label>
+                    <Label>°C</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Bubbles in last minute:</Label>
+                    <Label>120</Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Recording time:</Label>
+                    <Label>0d:12h:21m:55s</Label>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Separator Grid.Row="1"></Separator>
+        <StackPanel Name="NotificationsPanel" Grid.Row="2">
+            <Label Style="{DynamicResource SectionHeaderStyle}">Connectivity:</Label>
+            <CheckBox FontSize="16" VerticalAlignment="Center">Push data to ThingSpeak</CheckBox>
+            <StackPanel Margin="10,0,0,0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <Label Content="Channel ID:" Style="{DynamicResource SettingsSectionHeaderStyle}" FontSize="12" />
+                <TextBox Width="100" HorizontalAlignment="Right" Margin="2,2,0,2" VerticalAlignment="Center">ABCDEF12345</TextBox>
+                <Label Content="Write API Key:" Margin="5,0,0,0" FontSize="12" Style="{DynamicResource SettingsSectionHeaderStyle}" />
+                <TextBox Width="100" HorizontalAlignment="Right" Margin="2,2,0,2" VerticalAlignment="Center">ABCDEF12345</TextBox>
+            </StackPanel>
+            <CheckBox FontSize="16" VerticalAlignment="Center">Enable Pushover notifications</CheckBox>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <Label Content="Pushover User Key:" Style="{DynamicResource SettingsSectionHeaderStyle}" FontSize="12"/>
+                <TextBox VerticalAlignment="Center" Margin="2" Width="250">ABCDEF12345</TextBox>
+            </StackPanel>
+            <DockPanel Margin="10,0,0,0" HorizontalAlignment="Stretch">
+                <CheckBox>Notify me when temperature first drops below</CheckBox>
+                <controls:NumericUpDown Name="BelowValue" Margin="5,2,0,2"
+                                        TextAlignment="Left"
+                                        Minimum="0"                                        
+                                        Maximum="255" Value="{Binding HighThreshold}"/>
+                <Label>°C</Label>
+            </DockPanel>
+            <DockPanel Margin="10,0,0,0" HorizontalAlignment="Stretch">
+                <CheckBox>Notify me whenever temperature rises above</CheckBox>
+                <controls:NumericUpDown Name="AboveValue" Margin="5,2,0,2"
+                                        TextAlignment="Left"
+                                        Minimum="0"                                        
+                                        Maximum="255" Value="{Binding HighThreshold}"/>
+                <Label>°C</Label>
+            </DockPanel>
+            <DockPanel Margin="10,0,0,0" HorizontalAlignment="Stretch">
+                <CheckBox>Message me when bubble rate exceeds</CheckBox>
+                <controls:NumericUpDown Name="BubbleExceeds" Margin="5,2,0,2"
+                                        TextAlignment="Left"
+                                        Minimum="0"                                        
+                                        Maximum="255" Value="{Binding HighThreshold}"/>
+                <Label>BPM</Label>
+            </DockPanel>
+            <DockPanel Margin="10,0,0,0" HorizontalAlignment="Stretch">
+                <CheckBox>Message me when bubble rate falls below</CheckBox>
+                <controls:NumericUpDown Name="BubbleFallsBelow" Margin="5,2,0,2"
+                                        TextAlignment="Left"
+                                        Minimum="0"                                        
+                                        Maximum="255" Value="{Binding HighThreshold}"/>
+                <Label>BPM</Label>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

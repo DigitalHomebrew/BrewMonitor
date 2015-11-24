@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="DashboardWPF.Views.SettingsFlyout.SettingsFlyoutView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             d:DataContext="{d:DesignInstance settingsFlyout:SettingsFlyoutViewModel}"
+             xmlns:settingsFlyout="clr-namespace:DashboardWPF.ViewModels.SettingsFlyout"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="200" Width="200">
+    <UserControl.Resources>
+        <!--<ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>-->
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Label Content="Units" Margin="0,0,0,0" Style="{DynamicResource SettingsSectionHeaderStyle}" ToolTip="Select the units to display"/>
+            <RadioButton Margin="30, 0, 0, 0" Content="Metric" GroupName="12" IsChecked="{Binding Metric}" />
+            <RadioButton Margin="30, 10, 0, 10" Content="Imperial" GroupName="21" IsChecked="{Binding Imperial}" />
+            <Label Content="Theme" Margin="0,10,0,0" Style="{DynamicResource SettingsSectionHeaderStyle}" ToolTip="Choose between light or dark theme"/>
+            <RadioButton Margin="30, 0, 0, 0" Content="Dark" GroupName="theme1" IsChecked="{Binding DarkTheme}"/>
+            <RadioButton Margin="30, 10, 0, 0" Content="Light" GroupName="theme2" IsChecked="{Binding LightTheme}"/>
+            <Label Content="Accent" Margin="0,10,0,0" Style="{DynamicResource SettingsSectionHeaderStyle}" ToolTip="Set the highlight colour for this application"/>
+            <RadioButton Margin="30, 0, 0, 0" Content="Blue" GroupName="accent" IsChecked="{Binding BlueAccent}"/>
+            <RadioButton Margin="30, 10, 0, 0" Content="Green" GroupName="accent" IsChecked="{Binding GreenAccent}"/>
+            <RadioButton Margin="30, 10, 0, 0" Content="Orange" GroupName="accent" IsChecked="{Binding OrangeAccent}"/>
+            <RadioButton Margin="30, 10, 0, 0"  Content="Red" GroupName="accent" IsChecked="{Binding RedAccent}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
