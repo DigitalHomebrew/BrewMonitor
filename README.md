@@ -69,3 +69,5 @@ While a lot of work has gone into the BrewMonitor project as it stands, there is
 1. Finish plumbing and testing pushover and thingspeak integration
 2. Allow the BrewMonitor to talk directly with the cloud over WiFi
 3. Update the hardware to make it easier for others to build and contribute
+
+You can follow the BrewMonitor discussion over at [the AussieHomebrewer forum here](http://aussiehomebrewer.com/topic/88881-brewmonitor-project/).
