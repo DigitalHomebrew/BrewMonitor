@@ -11,7 +11,7 @@ The concept is pretty simple - to hook up a recording device to your fermenter t
 * "What was my peak temperature during fermentation?" - Necessary to accurately calculate priming additions.
 
 ##The hardware
-The BrewMonitor is an AVR based circuit that uses a DS18B20 temperature probe for measuring temperature and a custom infrared light gate to monitor bubbles passing through your air lock. It also has onboard memory storage and supports PC connectivity over USB.
+The BrewMonitor is an AVR based circuit that interfaces a digital temperature probe as well as an infrared light gate to monitor bubbles passing through your air lock. It has onboard memory for recording fermentation data and supports PC connectivity over USB.
 
 <p align="center">
   <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20pcb.jpg" width="700" alt="BrewMonitor's partially assembled PCB"/>
@@ -23,7 +23,7 @@ Fermentation activity is monitored by counting the bubbles as they pass through 
   <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20airlock.jpg" width="700" alt="BrewMonitor's airlock sensor mounted onto a common goose neck airlock"/>
 </p>
 
-BrewMonitor's hardware is completely open source and the eagle files for the PCB are included in this repository also.
+BrewMonitor's hardware is completely open source. The eagle files for the PCB are included in this repository along with the 3D .stl files for printing an airlock sensor.
 
 ##The software
 The BrewMonitor application is written in C#.NET and runs on windows. It has three main purposes:
