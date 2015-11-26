@@ -140,7 +140,6 @@ namespace DashboardWPF.ViewModels.Configure
             Bubbling = args.Sample.Bubbling;
             AdcValue = args.Sample.RawAdc;
             Temperature = args.Sample.Celsius;
-            Bubbling = args.Sample.Bubbling;
         }
 
         private void QueueConfigurationUpdate()
