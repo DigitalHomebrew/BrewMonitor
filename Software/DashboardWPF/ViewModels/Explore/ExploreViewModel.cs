@@ -249,7 +249,7 @@ namespace DashboardWPF.ViewModels.Explore
             _downloadWorker.RunWorkerCompleted += ReadMemoryCompleted;
             //_brewMonitorService.ConnectionChanged += (sender, args) =>
             //{
-            //    if (!_downloadWorker.IsBusy)
+            //    if (_brewMonitorService != null && _brewMonitorService.IsConnected() && !_downloadWorker.IsBusy) 
             //        _downloadWorker.RunWorkerAsync();
             //};
         }

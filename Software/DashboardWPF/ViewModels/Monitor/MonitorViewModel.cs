@@ -5,6 +5,8 @@ using BrewMonitor;
 using BrewMonitor.Models;
 using Caliburn.Micro;
 using MahApps.Metro.Controls.Dialogs;
+using PushoverClient;
+
 
 namespace DashboardWPF.ViewModels.Monitor
 {
@@ -110,7 +112,13 @@ namespace DashboardWPF.ViewModels.Monitor
                 if (value == _pushoverIsEnabled) return;
                 _pushoverIsEnabled = value;
                 NotifyOfPropertyChange(() => PushoverIsEnabled);
+                NotifyOfPropertyChange(() => CanTestPushover);
             }
+        }
+
+        public bool CanTestPushover
+        {
+            get { return PushoverIsEnabled; }
         }
 
         private string _pushoverUserKey;
@@ -233,6 +241,8 @@ namespace DashboardWPF.ViewModels.Monitor
             }
         }
 
+        private int _bubbleMaxTracker;
+
         #endregion
 
         public MonitorViewModel(IBrewMonitorService brewMonitorService, DialogCoordinator dialogCoordinator)
@@ -348,24 +358,56 @@ namespace DashboardWPF.ViewModels.Monitor
                 // handle thingspeak
                 if(ThingSpeakIsEnabled)
                     SendDataToThingSpeak();
-                BubbleCount = 0; 
-
+                
                 // handle pushover
                 if (PushoverIsEnabled)
                 {
                     if (TemperatureBelowIsEnabled && Convert.ToDouble(Temperature) < TemperatureBelowValue)
-                        SendPushoverNotification("Your wort is too cold", "it's below " + TemperatureBelowValue + " man");
+                    {
+                        SendPushoverNotification("Your wort is too cold", "it's below " + TemperatureBelowValue);
+                        TemperatureBelowIsEnabled = false;
+                    }
                     if (TemperatureAboveIsEnabled && Convert.ToDouble(Temperature) > TemperatureAboveValue)
-                        SendPushoverNotification("Your wort is too hot", "it's above " + TemperatureAboveValue + " man");
-                    if(bubb)
+                    {
+                        SendPushoverNotification("Your wort is too hot", "it's above " + TemperatureAboveValue);
+                        TemperatureAboveIsEnabled = false;
+                    }
+                    if (BubbleAboveIsEnabled && BubbleCount > BubbleAboveValue)
+                    {
+                        SendPushoverNotification("Bubble rate exceeded",
+                            "Your bubble rate has exceeded " + BubbleAboveValue);
+                        BubbleAboveIsEnabled = false;
+                    }
+                    if (!BubbleBelowIsEnabled) return;
+                    if (BubbleCount > _bubbleMaxTracker)
+                        _bubbleMaxTracker = BubbleCount;
+                    if (BubbleCount < BubbleBelowValue && _bubbleMaxTracker > BubbleBelowAfterValue)
+                    {
+                        SendPushoverNotification("Bubble rate dropping",
+                            "Below " + BubbleBelowValue + " after exceeding " + BubbleBelowAfterValue);
+                        BubbleBelowIsEnabled = false;
+                    }
                 }
+
+                BubbleCount = 0;
             }
+        }
+
+        public void TestPushover()
+        {
+            SendPushoverNotification("Pushover is working", "(baby!)");
         }
 
         void SendPushoverNotification(string title, string message)
         {
-            throw new NotImplementedException("Code this, yo");
+            var pclient = new Pushover("ab1oS822aYwUHDVj1RbRBeezt2ZHx3"); // aplication api token
+            var response = pclient.Push(
+              title,
+              message,
+              PushoverUserKey
+          );
         }
+
         public void SendDataToThingSpeak()
         {
             try

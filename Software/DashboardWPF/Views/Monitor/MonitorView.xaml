@@ -4,7 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:monitor="clr-namespace:DashboardWPF.ViewModels.Monitor"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=monitor:MonitorViewModel, IsDesignTimeCreatable=False}"
              d:DesignHeight="500" d:DesignWidth="700">
     <Grid Name="MainGrid">
         <Grid.RowDefinitions>
@@ -43,13 +45,14 @@
             <CheckBox Name="PushoverIsEnabled" FontSize="16" VerticalAlignment="Center">Enable Pushover notifications</CheckBox>
             <StackPanel Orientation="Horizontal" Margin="10,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
                 <Label Content="Pushover User Key:" Style="{DynamicResource SettingsSectionHeaderStyle}" FontSize="12"/>
-                <TextBox VerticalAlignment="Center" Margin="2" Width="250">ABCDEF12345</TextBox>
+                <TextBox Name="PushoverUserKey" VerticalAlignment="Center" Margin="2" Width="250">ABCDEF12345</TextBox>
+                <Button Name="TestPushover">Send test notification</Button>
             </StackPanel>
             <DockPanel Margin="10,0,0,0" HorizontalAlignment="Stretch">
                 <CheckBox Name="TemperatureBelowIsEnabled">Notify me when temperature first drops below</CheckBox>
                 <controls:NumericUpDown Name="TemperatureBelowValue" Margin="5,2,0,2"
                                         TextAlignment="Left"
-                                        Minimum="0"                                        
+                                        Minimum="0"   Value="{Binding TemperatureBelowValue, FallbackValue=16}"                                     
                                         Maximum="255"/>
                 <Label>°C</Label>
             </DockPanel>
@@ -58,7 +61,7 @@
                 <controls:NumericUpDown Name="TemperatureAboveValue" Margin="5,2,0,2"
                                         TextAlignment="Left"
                                         Minimum="0"                                        
-                                        Maximum="255" Value="{Binding HighThreshold, FallbackValue=26}"/>
+                                        Maximum="255" Value="{Binding TemperatureAboveValue, FallbackValue=26}"/>
                 <Label>°C</Label>
             </DockPanel>
             <DockPanel Margin="10,0,0,0" HorizontalAlignment="Stretch">
@@ -66,20 +69,20 @@
                 <controls:NumericUpDown Name="BubbleAboveValue" Margin="5,2,0,2"
                                         TextAlignment="Left"
                                         Minimum="0"                                        
-                                        Maximum="255" Value="{Binding HighThreshold, FallbackValue=6}"/>
+                                        Maximum="255" Value="{Binding BubbleAboveValue, FallbackValue=6}"/>
                 <Label>BPM</Label>
             </DockPanel>
             <DockPanel Margin="10,0,0,0" HorizontalAlignment="Stretch">
-                <CheckBox>Message me when bubble rate falls below</CheckBox>
+                <CheckBox Name="BubbleBelowIsEnabled">Message me when bubble rate falls below</CheckBox>
                 <controls:NumericUpDown Name="BubbleBelowValue" Margin="5,2,0,2"
                                         TextAlignment="Left"
                                         Minimum="0"                                        
-                                        Maximum="255" Value="{Binding HighThreshold, FallbackValue=4}"/>
+                                        Maximum="255" Value="{Binding BubbleBelowValue, FallbackValue=4}"/>
                 <Label>BPM after exceeding</Label>
                 <controls:NumericUpDown Name="BubbleFallBelowAfterValue" Margin="5,2,0,2"
                                         TextAlignment="Left"
                                         Minimum="0"                                        
-                                        Maximum="255" Value="{Binding HighThreshold, FallbackValue=20}"/>
+                                        Maximum="255" Value="{Binding BubbleBelowAfterValue, FallbackValue=20}"/>
                 <Label>BPM</Label>
             </DockPanel>
         </StackPanel>
