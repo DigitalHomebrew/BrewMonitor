@@ -5,7 +5,7 @@ Brewing beer is great fun and super rewarding. You're in control of the process 
 BrewMonitor monitors and records your home brew's fermentation activity while you're not around. It's like having a super-dedicated assistant brewer working 24/7. This frees you up to go about your daily life in confidence that your fermentation is still being monitored diligently and you can check up on it remotely at any time.
 
 <p align="center">
-  <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20sketch.jpg" width="700" alt="BrewMonitor Overview"/>
+  <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20sketch.png?raw=true" width="700" alt="BrewMonitor Overview"/>
 </p>
 
 The concept is pretty simple - to hook up a recording device to your fermenter that monitors temperature and airlock activity. That way you can easily answer important questions that would otherwise have required constant observation, such as:
