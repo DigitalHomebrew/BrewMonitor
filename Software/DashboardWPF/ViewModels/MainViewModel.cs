@@ -3,6 +3,7 @@ using BrewMonitor;
 using BrewMonitor.Models;
 using Caliburn.Micro;
 using DashboardWPF.ViewModels.Configure;
+using DashboardWPF.ViewModels.Control;
 using DashboardWPF.ViewModels.Explore;
 using DashboardWPF.ViewModels.Monitor;
 using DashboardWPF.ViewModels.SettingsFlyout;
@@ -58,6 +59,7 @@ namespace DashboardWPF.ViewModels
             _brewMonitorService = brewMonitorService;
             Items.Add(new ExploreViewModel(_brewMonitorService, DialogCoordinator.Instance));
             Items.Add(new MonitorViewModel(_brewMonitorService, DialogCoordinator.Instance));
+            Items.Add(new ControlViewModel(_brewMonitorService, DialogCoordinator.Instance));
             Items.Add(new ConfigureViewModel(_brewMonitorService, DialogCoordinator.Instance));
 
             _brewMonitorService.ConnectionChanged += BrewMonServiceOnConnectionChanged;

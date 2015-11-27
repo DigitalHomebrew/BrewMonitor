@@ -92,11 +92,15 @@
     </Compile>
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="ViewModels\Configure\ConfigureViewModel.cs" />
+    <Compile Include="ViewModels\Control\ControlViewModel.cs" />
     <Compile Include="ViewModels\IMainScreenTabItem.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\Explore\ExploreViewModel.cs" />
     <Compile Include="Views\Configure\ConfigureView.xaml.cs">
       <DependentUpon>ConfigureView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Control\ControlView.xaml.cs">
+      <DependentUpon>ControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Monitor\MonitorView.xaml.cs">
       <DependentUpon>MonitorView.xaml</DependentUpon>
@@ -154,6 +158,10 @@
     <Page Include="Views\Configure\ConfigureView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Control\ControlView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Monitor\MonitorView.xaml">
       <SubType>Designer</SubType>

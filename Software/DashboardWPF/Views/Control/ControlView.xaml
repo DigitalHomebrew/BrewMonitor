@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="DashboardWPF.Views.Control.ControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:control="clr-namespace:DashboardWPF.ViewModels.Control"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=control:ControlViewModel, IsDesignTimeCreatable=False}"
+             d:DesignHeight="500" d:DesignWidth="700">
+    <Grid Name="MainGrid">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Target Temperautre:</Label>
+                <Label Name="Temperature" Padding="5,5,0,5">21.0625</Label>
+                <Label Padding="0,5,5,5">°C</Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Hysteresis +/-:</Label>
+                <controls:NumericUpDown Name="Hysteresis" Minimum="0" Maximum="10" Interval="0.1" StringFormat="0.0"/>
+                <Label>°C</Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label>Fridge Compressor delay:</Label>
+                <controls:NumericUpDown Name="Delay" Minimum="0" Maximum="1000" Interval="1"/>
+                <Label>seconds</Label>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
