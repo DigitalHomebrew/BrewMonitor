@@ -1,12 +1,12 @@
 BrewMonitor
 ===========
-Brewing beer is great fun and super rewarding. You're in control of the process and in just a few hours you can produce top quality wort for your next award winning home brew. After brew day, the next step is fermentation and this is where the whole process can come unstuck. During fermentation your yeast is in charge and it can take days, weeks or even months to do its job. Yeast is a complex organism and doesn't always behave the way we expect which is why it pays to keep regular tabs on your fermentation to avoid any nasty surprises. This is repetitive and time consuming - a perfect candidate for automation with a system like BrewMonitor.
-
-BrewMonitor monitors and records your home brew's fermentation activity while you're not around. It's like having a super-dedicated assistant brewer working 24/7. This frees you up to go about your daily life in confidence that your fermentation is still being monitored diligently and you can check up on it remotely at any time.
+Brewing beer is great fun and super rewarding. You're in control of the process and in just a few hours you can produce top quality wort for your next award winning home brew. After brew day, the next step is fermentation and this is where the whole process can easily come unstuck. During fermentation your yeast is in control and it can take days, weeks or even months to do its job. Yeast is a complex organism and doesn't always behave the way we expect which is why it pays to keep regular tabs on your fermentation and avoid any nasty surprises. This is repetitive and time consuming - a perfect candidate for automation with a system like BrewMonitor.
 
 <p align="center">
   <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20sketch.png?raw=true" alt="BrewMonitor Overview"/>
 </p>
+
+BrewMonitor monitors and records your home brew's fermentation activity while you're not around. It's like having a super-dedicated assistant brewer working 24/7. This frees you up to go about your daily life in confidence that your fermentation is still being monitored diligently and you can check up on it remotely at any time.
 
 The concept is pretty simple - to hook up a recording device to your fermenter that monitors temperature and airlock activity. That way you can easily answer important questions that would otherwise have required constant observation, such as:
 * "What was my lag time?" - An indicator of yeast viability, health and pitching rate.
