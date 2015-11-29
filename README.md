@@ -1,6 +1,6 @@
 BrewMonitor
 ===========
-Brewing beer is great fun and super rewarding. You're in control of the process and in just a few hours you can produce top quality wort for your next award winning home brew. After brew day, the next step is fermentation and this is where the whole process can easily come unstuck. During fermentation your yeast is in control and it can take days, weeks or even months to do its job. Yeast is a complex organism and doesn't always behave the way we expect which is why it pays to keep regular tabs on your fermentation and avoid any nasty surprises. This is repetitive and time consuming - a perfect candidate for automation with a system like BrewMonitor.
+Brewing beer is great fun and super rewarding. You're in control of the process and whether you're brewing a kit & kilo, or a complex all grain recipe, in just a few hours you can produce top quality wort for your next award winning home brew. After brew day, the next step is fermentation and this is where the whole process can easily come unstuck. During fermentation your yeast is in control and it can take days, weeks or even months to do its job. Yeast is a complex organism and doesn't always behave the way we expect which is why it pays to keep regular tabs on your fermentation and avoid any nasty surprises. This is repetitive and time consuming - a perfect candidate for automation with a system like BrewMonitor.
 
 <p align="center">
   <img src="https://github.com/DigitalHomebrew/BrewMonitor/blob/master/Images/brewmonitor%20sketch.png?raw=true" alt="BrewMonitor Overview"/>
