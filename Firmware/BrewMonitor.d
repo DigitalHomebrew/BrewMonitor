@@ -81,7 +81,7 @@ BrewMonitor.o: BrewMonitor.c BrewMonitor.h Descriptors.h \
  LUFA/Drivers/USB/Class/Device/../Common/RNDISClassCommon.h \
  LUFA/Drivers/USB/Class/Device/../Common/CDCClassCommon.h \
  LUFA/Drivers/USB/Class/StillImageClass.h Config/AppConfig.h onewire.h \
- ds18x20.h pcb13.h memory.h uart.h
+ ds18x20.h Config/PCB13.h memory.h uart.h powerswitch.h
 
 BrewMonitor.h:
 
@@ -271,8 +271,10 @@ onewire.h:
 
 ds18x20.h:
 
-pcb13.h:
+Config/PCB13.h:
 
 memory.h:
 
 uart.h:
+
+powerswitch.h:

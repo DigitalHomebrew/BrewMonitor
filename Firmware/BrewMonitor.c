@@ -1,15 +1,16 @@
 #include "BrewMonitor.h"
 #include "onewire.h"
 #include "ds18x20.h"
-#include "pcb13.h"
+#include "Config/PCB13.h"
 #include "memory.h"
 #include <math.h>
 #include "uart.h"
+#include "powerswitch.h"
 
 #define UART_BAUD_RATE  9600
 
 
-#define THINGSPEAK_KEY "VSSYPQ8OSSJGPUDO"
+//#define THINGSPEAK_KEY "VSSYPQ8OSSJGPUDO"
 
 // Buffer to hold the previously generated HID report, for comparison purposes inside the HID class driver.
 static uint8_t PrevHIDReportBuffer[GENERIC_REPORT_SIZE];
@@ -46,7 +47,7 @@ uint8_t _usbArg0, _usbArg1, _usbArg2, _usbArg3, _usbArg4, _usbArg5, _usbArg6, _u
 uint8_t _sensorIDs[MAXSENSORS][OW_ROMCODE_SIZE];
 
 // temperature and bubble globals
-uint16_t _temperature; // stores the current temperature value
+uint16_t _rawTemperature; // stores the current temperature value
 uint16_t _recordBubbleCount; // gets cleared every time a sample is stored
 uint16_t _usbBubbleCount; // gets cleared every time a sample is sent
 uint8_t _readyForBubble; // need a delay between bubbles
@@ -81,9 +82,12 @@ int main(void)
 	output_high(RECORD_LED_PORT, RECORD_LED_PIN);
 	output_high(BUBBLE_LED_PORT, BUBBLE_LED_PIN);
 	SetupHardware();
+	
+	PowerSwitch_Setup();
+	
 	_delay_ms(200); // make sure the lights flash for a while even if everything else initialises fast
 	LoadSettings();
-	uart_init( UART_BAUD_SELECT(UART_BAUD_RATE,F_CPU) ); 
+	//uart_init( UART_BAUD_SELECT(UART_BAUD_RATE,F_CPU) ); 
 	//uart_init( UART_BAUD_SELECT(UART_BAUD_RATE,F_CPU) ); 
 	USB_Init();
 	
@@ -124,7 +128,7 @@ int main(void)
 		}
 		else if(_measureTempFlag)
 		{
-			_temperature = DS18X20_read_raw_single();
+			_rawTemperature = DS18X20_read_raw_single();
 			DS18X20_start_meas(DS18X20_POWER_EXTERN, NULL); // start next temperature conversion
 			_measureTempFlag = 0;
 		}
@@ -493,8 +497,19 @@ void RecordSample(void)
 	_secondsCounter++;
 	if(_secondsCounter == UPLOAD_INTERVAL) {
 		_secondsCounter = 0;
-		UploadSample();
+		//UploadSample();
 	}
+	
+	// handle controlling temperature
+	//uint8_t tempHighByte = _rawTemperature / 256;
+	//uint8_t tempMsb = tempHighByte % 8;
+	//uint8_t tempLsb = _rawTemperature % 256;
+	//uint16_t temp16 = (tempMsb * 256) + tempLsb;
+	//if(temp16 < (27 * 16))
+	if(_secondsCounter % 2)
+		PowerSwitch_HeaterOn();
+	else
+		PowerSwitch_HeaterOff();
 	
 	// only store when divisor counter = (2 ^ compactions) - 1	
 	if(_divisorCounter < pow(2, _compactionCount) - 1)
@@ -505,7 +520,7 @@ void RecordSample(void)
 	_divisorCounter = 0;
 	
 	// write new sample to eeprom
-	Sample sample = {_temperature, _recordBubbleCount};
+	Sample sample = {_rawTemperature, _recordBubbleCount};
 	LC32_WriteSample(_nextMemoryPosition, sample);
 	_nextMemoryPosition += 4;
 	
@@ -516,36 +531,36 @@ void RecordSample(void)
 		CompactMemory();
 }
 
-void UploadSample(void) {
-	// convert raw temp reading to Celsius string
-	double temperatureCelsius = (double)_temperature * 0.0625;
-	char temperatureString[16];
-    dtostrf(temperatureCelsius, 1, 4, temperatureString);
-	uint8_t temperatureStringLength = strlen(temperatureString);
-	
-	
-	int8_t totalMessageLength = temperatureStringLength + 52;
-	char totalMessageLengthString[12];
-	itoa(totalMessageLength, totalMessageLengthString, 10);
-
-	uart_puts("AT+RST\n");
-	_delay_ms(1000); // wait for OK
-	uart_puts("AT+CIPMUX=0\n");
-	_delay_ms(200); // wait for OK
-	uart_puts("AT+CIPSTART=\"TCP\",\"184.106.153.149\",80\n");
-	_delay_ms(1000); // wait for OK Linked
-	uart_puts("AT+CIPSEND=");
-	uart_puts(totalMessageLengthString);
-	uart_puts("\n");
-	_delay_ms(200); // wait for >
-	uart_puts("GET /update?key=");
-	uart_puts(THINGSPEAK_KEY);
-	uart_puts("&field1=");
-	uart_puts(temperatureString);
-	uart_puts("&field2=4\n");
-
-	//_delay_ms(10000); // wait for OK Unlink	
-}
+//void UploadSample(void) {
+	//// convert raw temp reading to Celsius string
+	//double temperatureCelsius = (double)_temperature * 0.0625;
+	//char temperatureString[16];
+    //dtostrf(temperatureCelsius, 1, 4, temperatureString);
+	//uint8_t temperatureStringLength = strlen(temperatureString);
+	//
+	//
+	//int8_t totalMessageLength = temperatureStringLength + 52;
+	//char totalMessageLengthString[12];
+	//itoa(totalMessageLength, totalMessageLengthString, 10);
+//
+	//uart_puts("AT+RST\n");
+	//_delay_ms(1000); // wait for OK
+	//uart_puts("AT+CIPMUX=0\n");
+	//_delay_ms(200); // wait for OK
+	//uart_puts("AT+CIPSTART=\"TCP\",\"184.106.153.149\",80\n");
+	//_delay_ms(1000); // wait for OK Linked
+	//uart_puts("AT+CIPSEND=");
+	//uart_puts(totalMessageLengthString);
+	//uart_puts("\n");
+	//_delay_ms(200); // wait for >
+	//uart_puts("GET /update?key=");
+	//uart_puts(THINGSPEAK_KEY);
+	//uart_puts("&field1=");
+	//uart_puts(temperatureString);
+	//uart_puts("&field2=4\n");
+//
+	////_delay_ms(10000); // wait for OK Unlink	
+//}
 
 // send current values over usb
 void SendSample(void)
@@ -553,8 +568,8 @@ void SendSample(void)
 	// send data to usb instead of EEPROM
 	_sendSampleFlag = 0;
 	_usbArg0 = DATA_SAMPLE;
-	_usbArg1 = _temperature / 256;
-	_usbArg2 = _temperature % 256;
+	_usbArg1 = _rawTemperature / 256;
+	_usbArg2 = _rawTemperature % 256;
 	_usbArg3 = _usbBubbleCount / 256;
 	_usbArg4 = _usbBubbleCount % 256;
 	_usbArg5 = _bubbleOccurring;

@@ -110,6 +110,9 @@
     <Compile Include="Config\LUFAConfig.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Config\PCB13.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="crc8.c">
       <SubType>compile</SubType>
     </Compile>
@@ -914,16 +917,13 @@
     <Compile Include="onewire.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="pcb13.h">
+    <Compile Include="powerswitch.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="powerswitch.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="twimaster.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="uart.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="uart.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

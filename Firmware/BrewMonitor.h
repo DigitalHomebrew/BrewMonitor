@@ -48,7 +48,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 #define BUBBLE_DELAY_HIGH		0x0e
 
 // configuration settings
-#define UPLOAD_INTERVAL	15 //seconds
+#define UPLOAD_INTERVAL	30 //seconds
 
 // define usb functions
 // the host sends a function in Arg0 and optional arguments in remaining fields

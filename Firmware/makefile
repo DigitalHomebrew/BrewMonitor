@@ -16,7 +16,7 @@ F_CPU        = 16000000
 F_USB        = 16000000
 OPTIMIZATION = s
 TARGET       = BrewMonitor
-SRC          = BrewMonitor.c Descriptors.c onewire.c ds18x20.c crc8.c twimaster.c memory.c uart.c $(LUFA_SRC_USB) $(LUFA_SRC_USBCLASS)
+SRC          = BrewMonitor.c Descriptors.c onewire.c ds18x20.c crc8.c twimaster.c memory.c powerswitch.c $(LUFA_SRC_USB) $(LUFA_SRC_USBCLASS)
 # 
 LUFA_PATH    = LUFA
 CC_FLAGS     = -DUSE_LUFA_CONFIG_HEADER -IConfig/

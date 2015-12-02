@@ -1,5 +1,5 @@
 /*
- * pcb13.h
+ * PCB13.h
  * IO Mappings for BrewMonitor PCB version 1.3
  * Created: 29/05/2014 9:40:58 AM
  *  Author: Michael
@@ -7,6 +7,8 @@
 
 #ifndef PCB13_H_
 #define PCB13_H_
+
+#include "avr/io.h"
 
 // Define IO
 #define RECORD_LED_PORT PORTB
@@ -55,5 +57,10 @@
 #define EEPROM_SCL_PIN PIN0
 #define EEPROM_SDA_DDR DDRD
 #define EEPROM_SDA_PIN PIN1
+
+// pinout for 433MHz transmitter
+#define POWERSWITCH_DATA_DDR DDRB
+#define POWERSWITCH_DATA_PORT PORTB
+#define POWERSWITCH_DATA_PIN PIN6
 
 #endif /* PCB13_H_ */
